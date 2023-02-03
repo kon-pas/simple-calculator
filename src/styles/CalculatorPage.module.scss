@@ -1,0 +1,139 @@
+.calculator-page {
+  @apply min-h-screen
+    bg-gradient-to-tl from-green-600/50 to-lime-500/50;
+
+  .calculator {
+    $self: ".calculator";
+
+    @apply bg-stone-900
+      mx-auto max-w-md p-4
+      grid grid-cols-4
+      rounded-3xl
+      outline-1 
+      shadow-inner 
+      drop-shadow-2xl
+      translate-y-[5vh]
+      sm:translate-y-[10vh]
+      opacity-95;
+
+    #{ $self }__display {
+      @apply text-stone-200 font-mono text-3xl
+        col-span-4
+        h-8 pr-4
+        rounded-xl
+        flex justify-end items-center;
+
+      &:nth-child(2) {
+        @apply text-amber-500;
+      }
+    }
+
+    #{ $self }__btn {
+      // @@@ NOTE: Tap highlight color NOT supported by TailwindCSS at the moment of writing
+
+      -webkit-tap-highlight-color: transparent;
+
+      @apply text-stone-200 font-mono text-xl 
+        h-12;
+
+      // @@@ NOTE: Arbitary values applied with @apply are NOT supported at the moment of writing
+
+      &:nth-child(n + 3) {
+        @apply select-none;
+      }
+
+      &:nth-child(4) {
+        @apply rounded-l-xl;
+      }
+
+      &:nth-child(6) {
+        @apply border-stone-900 border-r-2;
+      }
+
+      &:nth-child(7) {
+        @apply rounded-tr-xl;
+      }
+
+      @for $n from 4 through 7 {
+        &:nth-child(#{$n}) {
+          @apply mt-3;
+        }
+      }
+
+      @for $n from 11 through 15 {
+        &:nth-child(#{$n}) {
+          @apply self-center h-14;
+        }
+      }
+
+      &:nth-child(7),
+      &:nth-child(11),
+      &:nth-child(15),
+      &:nth-child(19) {
+        @apply hover:text-stone-100 transition duration-200;
+      }
+
+      &:nth-child(8),
+      &:nth-child(9),
+      &:nth-child(10) {
+        @apply border-stone-800/70 border-b-2
+          self-end;
+      }
+
+      &:nth-child(8),
+      &:nth-child(12),
+      &:nth-child(16) {
+        @apply border-stone-800/70 border-r-2
+          w-3/4 justify-self-end pr-6;
+      }
+
+      &:nth-child(10),
+      &:nth-child(14),
+      &:nth-child(18) {
+        @apply border-stone-800/70 border-l-2
+          w-3/4 justify-self-start pl-6;
+      }
+
+      &:nth-child(16),
+      &:nth-child(17),
+      &:nth-child(18) {
+        @apply border-stone-800/70 border-t-2;
+      }
+
+      &:nth-last-child(4) {
+        @apply mb-3
+          rounded-b-xl;
+      }
+
+      &:nth-last-child(3) {
+        @apply text-stone-300
+          rounded-xl
+          hover:text-amber-400 transition duration-200;
+      }
+
+      &--operand {
+        @apply hover:text-amber-400 transition duration-200;
+      }
+
+      &--operator {
+        @apply bg-stone-800/70
+          text-amber-500;
+      }
+
+      &--util {
+        @apply bg-stone-800/70
+          hover:text-amber-400 transition duration-200;
+      }
+
+      &--equals {
+        @apply bg-amber-500
+          text-stone-900
+          shadow-amber-300/40 shadow-sm
+          hover:shadow-amber-300/20 hover:shadow-md
+          transition-shadow duration-200
+          rounded-xl
+          col-span-2;
+      }
+    }
+  }
+}

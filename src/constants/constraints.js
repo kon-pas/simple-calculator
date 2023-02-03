@@ -1,0 +1,3 @@
+export const MAX_DISPLAY_TEXT_LENGTH = 23;
+
+export const MAX_ANSWEAR_BUTTON_TEXT_LENGTH = 8;
